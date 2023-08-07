@@ -1,8 +1,5 @@
 const sectionReiniciar = document.getElementById('reiniciar')
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
-const botonFuego = document.getElementById('boton-fuego')
-const botonAgua = document.getElementById('boton-agua')
-const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarPeleador = document.getElementById('seleccionar-peleador')
@@ -18,6 +15,7 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
+const contenedorAtaques = document.getElementById('contenedor-ataques')
 
 let peleadores = []
 let ataqueJugador
@@ -27,6 +25,10 @@ let inputGoku
 let inputVegeta
 let inputPiccolo
 let peleadorJugador
+let ataquesPeleador
+let botonFuego
+let botonAgua
+let botonTierra
 let vidasJugador = 10
 let vidasEnemigo = 10
 
@@ -85,16 +87,12 @@ function iniciarJuego() {
         contenedorTarjetas.innerHTML += opcionDePeleadores
 
         inputGoku = document.getElementById('Goku')
-        inputVegeta = document.getElementById('Veggeta')
+        inputVegeta = document.getElementById('Vegeta')
         inputPiccolo = document.getElementById('Piccolo')
     })
 
     let botonPeleadorJugador = document.getElementById('boton-peleador')
     botonPeleadorJugador.addEventListener('click', seleccionarPeleadorJugador)
-
-    botonFuego.addEventListener('click', ataqueFuego)
-    botonAgua.addEventListener('click', ataqueAgua)
-    botonTierra.addEventListener('click', ataqueTierra)
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
@@ -116,7 +114,6 @@ function seleccionarPeleadorJugador() {
     sectionSeleccionarPeleador.style.display = 'none'
 
     sectionSeleccionarAtaque.style.display = 'flex'
-
 
     if (inputGoku.checked) {
         spanPeleadorJugador.innerHTML = inputGoku.id
@@ -147,6 +144,21 @@ function extraerAtaques(peleadorJugador) {
 }
 
 function mostrarAtaques(ataques) {
+    ataques.forEach((ataque) => {
+        ataquesPeleador = `
+        <button id=${ataque.id} class="boton-ataque BAtaque">${ataque.nombre}</button>
+        `
+        contenedorAtaques.innerHTML += ataquesPeleador
+    })
+
+
+    botonFuego = document.getElementById('boton-fuego')
+    botonAgua = document.getElementById('boton-agua')
+    botonTierra = document.getElementById('boton-tierra')
+
+    botonFuego.addEventListener('click', ataqueFuego)
+    botonAgua.addEventListener('click', ataqueAgua)
+    botonTierra.addEventListener('click', ataqueTierra)
 
 }
 
