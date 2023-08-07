@@ -26,6 +26,7 @@ let opcionDePeleadores
 let inputGoku
 let inputVegeta
 let inputPiccolo
+let peleadorJugador
 let vidasJugador = 10
 let vidasEnemigo = 10
 
@@ -119,15 +120,34 @@ function seleccionarPeleadorJugador() {
 
     if (inputGoku.checked) {
         spanPeleadorJugador.innerHTML = inputGoku.id
+        peleadorJugador = inputGoku.id
     } else if(inputVegeta.checked) {
         spanPeleadorJugador.innerHTML = inputVegeta.id
+        peleadorJugador = inputVegeta.id
     } else if(inputPiccolo.checked){
         spanPeleadorJugador.innerHTML = inputPiccolo.id
+        peleadorJugador = inputPiccolo.id
     } else {
         alert('Selecciona a tu peleador')
     }
 
+    extraerAtaques(peleadorJugador)
     seleccionarPeleadorEnemigo()
+}
+
+function extraerAtaques(peleadorJugador) {
+    let ataques
+    for (let i = 0; i < peleadores.length; i++) {
+        if (peleadorJugador == peleadores[i].nombre) {
+            ataques = peleadores[i].ataques
+        }
+
+    }
+    mostrarAtaques(ataques)
+}
+
+function mostrarAtaques(ataques) {
+
 }
 
 function seleccionarPeleadorEnemigo() {
