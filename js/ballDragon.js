@@ -6,9 +6,6 @@ const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarPeleador = document.getElementById('seleccionar-peleador')
-const inputGoku = document.getElementById('Goku')
-const inputVeggeta = document.getElementById('Veggeta')
-const inputPiccolo = document.getElementById('Piccolo')
 const spanPeleadorJugador = document.getElementById('peleador-jugador')
 
 const spanPeleadorEnemigo = document.getElementById('peleador-enemigo')
@@ -26,6 +23,9 @@ let peleadores = []
 let ataqueJugador
 let ataqueEnemigo
 let opcionDePeleadores
+let inputGoku
+let inputVeggeta
+let inputPiccolo
 let vidasJugador = 10
 let vidasEnemigo = 10
 
@@ -82,6 +82,10 @@ function iniciarJuego() {
             </label>
         `
         contenedorTarjetas.innerHTML += opcionDePeleadores
+
+        inputGoku = document.getElementById('Goku')
+        inputVeggeta = document.getElementById('Veggeta')
+        inputPiccolo = document.getElementById('Piccolo')
     })
 
     let botonPeleadorJugador = document.getElementById('boton-peleador')
