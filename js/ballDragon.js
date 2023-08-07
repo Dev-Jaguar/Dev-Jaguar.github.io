@@ -38,9 +38,9 @@ class Peleador {
     }
 }
 
-let goku = new Peleador('Goku', './goku.png', 10)
-let veggeta = new Peleador('Veggeta', './veggeta.png', 10)
-let piccolo = new Peleador('Piccolo', './piccolo.png', 10)
+let goku = new Peleador('Goku', '../assets/goku.png', 10)
+let veggeta = new Peleador('Veggeta', '../assets/veggeta.png', 10)
+let piccolo = new Peleador('Piccolo', '../assets/piccolo.png', 10)
 
 goku.ataques.push(
     { nombre: '⚡️', id: 'boton-fuego' },
