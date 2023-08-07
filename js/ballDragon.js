@@ -18,7 +18,7 @@ const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 const contenedorAtaques = document.getElementById('contenedor-ataques')
 
 let peleadores = []
-let ataqueJugador
+let ataqueJugador = []
 let ataqueEnemigo
 let opcionDePeleadores
 let inputGoku
@@ -98,19 +98,6 @@ function iniciarJuego() {
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
-function ataqueFuego() {
-    ataqueJugador = 'Aumento Poder'
-    ataqueAleatorioEnemigo()
-}
-function ataqueAgua() {
-    ataqueJugador = 'Ataque final'
-    ataqueAleatorioEnemigo()
-}
-function ataqueTierra() {
-    ataqueJugador = 'Ataque especial'
-    ataqueAleatorioEnemigo()
-}
-
 function seleccionarPeleadorJugador() {
     sectionSeleccionarPeleador.style.display = 'none'
 
@@ -157,11 +144,27 @@ function mostrarAtaques(ataques) {
     botonAttFinal = document.getElementById('boton-Attfinal')
     botonAttEspecial = document.getElementById('boton-Attespecial')
     botones = document.querySelectorAll('.BAtaque')
-    console.log(botones)
 
-    botonXp.addEventListener('click', ataqueFuego)
-    botonAttFinal.addEventListener('click', ataqueAgua)
-    botonAttEspecial.addEventListener('click', ataqueTierra)
+}
+
+function secuenciaAtaque() {
+    botones.forEach((boton) => {
+        boton.addEventListener('click', (e) => {
+            if (e.target.textContent == '⚡️') {
+                ataqueJugador.push('Aumento Poder')
+                console.log(ataqueJugador)
+                boton.style.background = '#6b4e10'
+            } else if (e.target.textContent == '🗡️') {
+                ataqueJugador.push('Ataque Final')
+                console.log(ataqueJugador)
+                boton.style.background = '#6b4e10'
+            } else {
+                ataqueJugador.push('Ataque Especial')
+                console.log(ataqueJugador)
+                boton.style.background = '#6b4e10'
+            }
+        })
+    })
 
 }
 
@@ -169,6 +172,7 @@ function seleccionarPeleadorEnemigo() {
     let peleadorAleatorio = aleatorio(1, peleadores.length -1)
 
     spanPeleadorEnemigo.innerHTML = peleadores[peleadorAleatorio].nombre
+    secuenciaAtaque()
 }
 
 function ataqueAleatorioEnemigo() {
