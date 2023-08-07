@@ -26,9 +26,10 @@ let inputVegeta
 let inputPiccolo
 let peleadorJugador
 let ataquesPeleador
-let botonFuego
-let botonAgua
-let botonTierra
+let botonXp
+let botonAttFinal
+let botonAttEspecial
+let botones = []
 let vidasJugador = 10
 let vidasEnemigo = 10
 
@@ -46,27 +47,27 @@ let vegeta = new Peleador('Vegeta', 'file:///Users/Emanuel/Desktop/progBasica/ba
 let piccolo = new Peleador('Piccolo', 'file:///Users/Emanuel/Desktop/progBasica/ballDragon/assets/piccolo.png', 10)
 
 goku.ataques.push(
-    { nombre: '⚡️', id: 'boton-fuego' },
-    { nombre: '⚡️', id: 'boton-fuego' },
-    { nombre: '⚡️', id: 'boton-fuego' },
-    { nombre: '🗡️', id: 'boton-agua' },
-    { nombre: '✨', id: 'boton-tierra' }
+    { nombre: '⚡️', id: 'boton-xp' },
+    { nombre: '⚡️', id: 'boton-xp' },
+    { nombre: '⚡️', id: 'boton-xp' },
+    { nombre: '🗡️', id: 'boton-Attfinal' },
+    { nombre: '✨', id: 'boton-Attespecial' }
 )
 
 vegeta.ataques.push(
-    { nombre: '🗡️', id: 'boton-agua' },
-    { nombre: '🗡️', id: 'boton-agua' },
-    { nombre: '🗡️', id: 'boton-agua' },
-    { nombre: '⚡️', id: 'boton-fuego' },
-    { nombre: '✨', id: 'boton-tierra' }
+    { nombre: '🗡️', id: 'boton-Attfinal' },
+    { nombre: '🗡️', id: 'boton-Attfinal' },
+    { nombre: '🗡️', id: 'boton-Attfinal' },
+    { nombre: '⚡️', id: 'boton-xp' },
+    { nombre: '✨', id: 'boton-Attespecial' }
 )
 
 piccolo.ataques.push(
-    { nombre: '✨', id: 'boton-tierra' },
-    { nombre: '✨', id: 'boton-tierra' },
-    { nombre: '✨', id: 'boton-tierra' },
-    { nombre: '⚡️', id: 'boton-fuego' },
-    { nombre: '🗡️', id: 'boton-agua' }
+    { nombre: '✨', id: 'boton-Attespecial' },
+    { nombre: '✨', id: 'boton-Attespecial' },
+    { nombre: '✨', id: 'boton-Attespecial' },
+    { nombre: '⚡️', id: 'boton-xp' },
+    { nombre: '🗡️', id: 'boton-Attfinal' }
 )
 
 peleadores.push(goku, vegeta, piccolo)
@@ -152,13 +153,15 @@ function mostrarAtaques(ataques) {
     })
 
 
-    botonFuego = document.getElementById('boton-fuego')
-    botonAgua = document.getElementById('boton-agua')
-    botonTierra = document.getElementById('boton-tierra')
+    botonXp = document.getElementById('boton-xp')
+    botonAttFinal = document.getElementById('boton-Attfinal')
+    botonAttEspecial = document.getElementById('boton-Attespecial')
+    botones = document.querySelectorAll('.BAtaque')
+    console.log(botones)
 
-    botonFuego.addEventListener('click', ataqueFuego)
-    botonAgua.addEventListener('click', ataqueAgua)
-    botonTierra.addEventListener('click', ataqueTierra)
+    botonXp.addEventListener('click', ataqueFuego)
+    botonAttFinal.addEventListener('click', ataqueAgua)
+    botonAttEspecial.addEventListener('click', ataqueTierra)
 
 }
 
@@ -221,12 +224,12 @@ function crearMensaje(resultado) {
 function crearMensajeFinal(resultadoFinal) {
     sectionMensajes.innerHTML = resultadoFinal
 
-    let botonFuego = document.getElementById('boton-fuego')
-    botonFuego.disabled = true
-    let botonAgua = document.getElementById('boton-agua')
-    botonAgua.disabled = true
-    let botonTierra = document.getElementById('boton-tierra')
-    botonTierra.disabled = true
+    let botonXp = document.getElementById('boton-xp')
+    botonXp.disabled = true
+    let botonAttFinal = document.getElementById('boton-Attfinal')
+    botonAttFinal.disabled = true
+    let botonAttEspecial = document.getElementById('boton-Attespecial')
+    botonAttEspecial.disabled = true
 
     let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
