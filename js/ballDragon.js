@@ -24,7 +24,7 @@ let ataqueJugador
 let ataqueEnemigo
 let opcionDePeleadores
 let inputGoku
-let inputVeggeta
+let inputVegeta
 let inputPiccolo
 let vidasJugador = 10
 let vidasEnemigo = 10
@@ -39,7 +39,7 @@ class Peleador {
 }
 
 let goku = new Peleador('Goku', '../assets/goku.png', 10)
-let veggeta = new Peleador('Veggeta', '../assets/veggeta.png', 10)
+let vegeta = new Peleador('Vegeta', '../assets/veggeta.png', 10)
 let piccolo = new Peleador('Piccolo', '../assets/piccolo.png', 10)
 
 goku.ataques.push(
@@ -50,7 +50,7 @@ goku.ataques.push(
     { nombre: '✨', id: 'boton-tierra' }
 )
 
-veggeta.ataques.push(
+vegeta.ataques.push(
     { nombre: '🗡️', id: 'boton-agua' },
     { nombre: '🗡️', id: 'boton-agua' },
     { nombre: '🗡️', id: 'boton-agua' },
@@ -66,7 +66,7 @@ piccolo.ataques.push(
     { nombre: '🗡️', id: 'boton-agua' }
 )
 
-peleadores.push(goku, veggeta, piccolo)
+peleadores.push(goku, vegeta, piccolo)
 
 function iniciarJuego() {
     sectionReiniciar.style.display = 'none'
@@ -118,11 +118,11 @@ function seleccionarPeleadorJugador() {
 
 
     if (inputGoku.checked) {
-        spanPeleadorJugador.innerHTML = 'Goku'
-    } else if(inputVeggeta.checked) {
-        spanPeleadorJugador.innerHTML = 'Veggeta'
+        spanPeleadorJugador.innerHTML = inputGoku.id
+    } else if(inputVegeta.checked) {
+        spanPeleadorJugador.innerHTML = inputVegeta.id
     } else if(inputPiccolo.checked){
-        spanPeleadorJugador.innerHTML = 'Piccolo'
+        spanPeleadorJugador.innerHTML = inputPiccolo.id
     } else {
         alert('Selecciona a tu peleador')
     }
