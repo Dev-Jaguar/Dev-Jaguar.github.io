@@ -84,7 +84,7 @@ function iniciarJuego() {
         contenedorTarjetas.innerHTML += opcionDePeleadores
 
         inputGoku = document.getElementById('Goku')
-        inputVeggeta = document.getElementById('Veggeta')
+        inputVegeta = document.getElementById('Veggeta')
         inputPiccolo = document.getElementById('Piccolo')
     })
 
@@ -131,16 +131,9 @@ function seleccionarPeleadorJugador() {
 }
 
 function seleccionarPeleadorEnemigo() {
-    let peleadorAleatorio = aleatorio(1, 3)
+    let peleadorAleatorio = aleatorio(1, peleadores.length -1)
 
-    if (peleadorAleatorio == 1) {
-        spanPeleadorEnemigo.innerHTML = 'Goku'
-    }
-    else if (peleadorAleatorio == 2){
-        spanPeleadorEnemigo.innerHTML = 'Veggeta'
-    }else  {
-        spanPeleadorEnemigo.innerHTML = 'Piccolo'
-    }
+    spanPeleadorEnemigo.innerHTML = peleadores[peleadorAleatorio].nombre
 }
 
 function ataqueAleatorioEnemigo() {
