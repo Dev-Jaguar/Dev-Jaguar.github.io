@@ -19,8 +19,9 @@ const contenedorAtaques = document.getElementById('contenedor-ataques')
 
 let peleadores = []
 let ataqueJugador = []
-let ataqueEnemigo
+let ataqueEnemigo = []
 let opcionDePeleadores
+let ataquesPeleadorEnemigo
 let inputGoku
 let inputVegeta
 let inputPiccolo
@@ -163,28 +164,30 @@ function secuenciaAtaque() {
                 console.log(ataqueJugador)
                 boton.style.background = '#6b4e10'
             }
+            ataqueAleatorioEnemigo()
         })
     })
-
 }
 
 function seleccionarPeleadorEnemigo() {
-    let peleadorAleatorio = aleatorio(1, peleadores.length -1)
+    let peleadorAleatorio = aleatorio(0, peleadores.length -1)
 
     spanPeleadorEnemigo.innerHTML = peleadores[peleadorAleatorio].nombre
+    ataquesPeleadorEnemigo = peleadores[peleadorAleatorio].nombre
     secuenciaAtaque()
 }
 
 function ataqueAleatorioEnemigo() {
-    const ataqueAleatorio = aleatorio(1, 3)
+    const ataqueAleatorio = aleatorio(0, ataquesPeleadorEnemigo.length -1)
 
-    if(ataqueAleatorio == 1){
-        ataqueEnemigo = 'Aumento poder'
-    } else if(ataqueAleatorio == 2){
-        ataqueEnemigo = 'Ataque final'
+    if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
+        ataqueEnemigo.push('Aumento poder')
+    } else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
+        ataqueEnemigo.push('Ataque final')
     } else{
-        ataqueEnemigo = 'Ataque especial'
+        ataqueEnemigo.push('Ataque especial')
     }
+    console.log(ataqueEnemigo)
     combate()
 }
 
