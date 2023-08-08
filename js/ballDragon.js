@@ -159,14 +159,17 @@ function secuenciaAtaque() {
                 ataqueJugador.push('Aumento Poder')
                 console.log(ataqueJugador)
                 boton.style.background = '#6b4e10'
+                boton.disabled = true
             } else if (e.target.textContent == '🗡️') {
                 ataqueJugador.push('Ataque Final')
                 console.log(ataqueJugador)
                 boton.style.background = '#6b4e10'
+                boton.disabled = true
             } else {
                 ataqueJugador.push('Ataque Especial')
                 console.log(ataqueJugador)
                 boton.style.background = '#6b4e10'
+                boton.disabled = true
             }
             ataqueAleatorioEnemigo()
         })
@@ -252,13 +255,6 @@ function crearMensaje(resultado) {
 
 function crearMensajeFinal(resultadoFinal) {
     sectionMensajes.innerHTML = resultadoFinal
-
-    let botonXp = document.getElementById('boton-xp')
-    botonXp.disabled = true
-    let botonAttFinal = document.getElementById('boton-Attfinal')
-    botonAttFinal.disabled = true
-    let botonAttEspecial = document.getElementById('boton-Attespecial')
-    botonAttEspecial.disabled = true
 
     let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
