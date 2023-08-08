@@ -31,8 +31,12 @@ let botonXp
 let botonAttFinal
 let botonAttEspecial
 let botones = []
-let vidasJugador = 10
-let vidasEnemigo = 10
+let victoriasJugador = 0
+let victoriasEnemigo = 0
+let indexAtaqueJugador = 0
+let indexAtaqueEnemigo = 0
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 class Peleador {
     constructor(nombre, foto, vida) {
@@ -180,39 +184,57 @@ function seleccionarPeleadorEnemigo() {
 function ataqueAleatorioEnemigo() {
     const ataqueAleatorio = aleatorio(0, ataquesPeleadorEnemigo.length -1)
 
-    if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
-        ataqueEnemigo.push('Aumento poder')
-    } else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
-        ataqueEnemigo.push('Ataque final')
+    if(ataqueAleatorio === 0 || ataqueAleatorio === 1){
+        ataqueEnemigo.push('Aumento Poder')
+    } else if(ataqueAleatorio === 3 || ataqueAleatorio === 4){
+        ataqueEnemigo.push('Ataque Final')
     } else{
-        ataqueEnemigo.push('Ataque especial')
+        ataqueEnemigo.push('Ataque Especial')
     }
     console.log(ataqueEnemigo)
-    combate()
+    iniciarPelea()
+}
+
+function iniciarPelea() {
+    if (ataqueJugador.length === 5) {
+        combate()
+    }
+}
+
+function indexAmbosOponenetes(jugador, enemigo) {
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
 }
 
 function combate() {
-    if (ataqueEnemigo == ataqueJugador) {
-        crearMensaje('Empate 🤼')
-    } else if((ataqueJugador == 'Aumento poder' && ataqueEnemigo == 'Ataque especial') || (ataqueJugador == 'Ataque final' && ataqueEnemigo == 'Aumento poder') || (ataqueJugador == 'Ataque especial' && ataqueEnemigo == 'Ataque final')) {
-        crearMensaje('GANAS ESTA RONDA! 🎉')
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    } else {
-        crearMensaje('has perdido esta ronda... 😔')
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        indexAmbosOponenetes(index, index)
+        if(ataqueJugador[index] == ataqueEnemigo[index]) {
+            crearMensaje('Empate 🤼')
+        }  else if ((ataqueJugador[index] == 'Aumento Poder' && ataqueEnemigo[index] == 'Ataque Especial') || (ataqueJugador[index] == 'Ataque Final' && ataqueEnemigo[index] == 'Aumento Poder') || (ataqueJugador[index] == 'Ataque Especial' && ataqueEnemigo[index] == 'Ataque Final')) {
+            crearMensaje('GANAS ESTA RONDA! 🎉')
+            victoriasJugador++
+            spanVidasJugador.innerHTML = victoriasJugador
+        } else {
+            crearMensaje('has perdido esta ronda... 😔')
+            victoriasEnemigo++
+            spanVidasEnemigo.innerHTML = victoriasEnemigo
+        }
+
     }
     revisarVidas()
 }
 
 function revisarVidas(){
-    if (vidasEnemigo == 0) {
-        crearMensajeFinal('El peleador del enemigo no puede continuar. FELICIDADES 🎉')
-        alert('HAS GANADO!!!')
-    } else if (vidasJugador == 0) {
-        crearMensajeFinal('Tu peleador no puede continuar. Lo lamento 😔')
-        alert('has perdido...')
+    if (victoriasJugador === victoriasEnemigo) {
+        crearMensajeFinal('Ambos peleadores pueden seguir de pie. Empate 🤼')
+        alert('Empate 🤼')
+    } else if (victoriasJugador > victoriasEnemigo) {
+        crearMensajeFinal('Hiciste una buena combinación. TU GANAS 🎉')
+        alert('HAS GANADO 🎉')
+    } else {
+        crearMensajeFinal('Tu contraincante hizo una buena combinación. pierdes 😢')
+        alert('has perdido 😢')
     }
 }
 
@@ -221,8 +243,8 @@ function crearMensaje(resultado) {
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
     sectionMensajes.innerHTML = resultado
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)

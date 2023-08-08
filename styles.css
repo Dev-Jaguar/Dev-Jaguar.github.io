@@ -58,12 +58,13 @@ img {
 }
 
 #boton-peleador {
-    width: 180px;
-    height: 40px;
+    width: 280px;
+    height: 100px;
     border-radius: 20px;
     background: transparent;
     border: 2px solid white;
     color: white;
+    font-size: 50px;
     font-family: 'Edu SA Beginner', cursive;
     margin-top: 30px;
 }
